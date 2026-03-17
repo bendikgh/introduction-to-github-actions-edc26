@@ -1,0 +1,24 @@
+name: Workflow of exercise 3
+run-name: Third workflow # Optional
+
+on: [push]
+env:
+    GREETING: "Hello world"
+
+jobs:
+  print_message:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${GREETING}
+  print_secret:
+    runs-on: ubuntu-latest
+    env:
+      SECRET_MESSAGE: ${{ secrets.TEST_SECRET }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - run: echo ${SECRET_MESSAGE}
+      - run: echo ${GITHUB_TOKEN}
+      - name: "print message"
+        if: ${{ env.SECRET_MESSAGE != 'secret' }}
+        run: echo "The secret is correct"
+
