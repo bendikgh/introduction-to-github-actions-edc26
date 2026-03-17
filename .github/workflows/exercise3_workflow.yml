@@ -19,6 +19,6 @@ jobs:
       - run: echo ${SECRET_MESSAGE}
       - run: echo ${GITHUB_TOKEN}
       - name: "print message"
-        if: ${{ env.SECRET_MESSAGE != 'secret' }}
+        if: ${{ env.SECRET_MESSAGE == 'secret' }}
         run: echo "The secret is correct"
 
