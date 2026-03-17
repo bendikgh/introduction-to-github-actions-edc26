@@ -2,6 +2,7 @@ name: Workflow of exercise 4
 run-name: Fourth workflow # Optional
 
 on: [push]
+permissions: {}
 
 jobs:
   run_python:
